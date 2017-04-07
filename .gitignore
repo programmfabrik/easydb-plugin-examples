@@ -1,0 +1,7 @@
+*/l10n/*json
+*.coffee.js
+*.swp
+*.pyc
+build
+build-stamp-*
+*~
