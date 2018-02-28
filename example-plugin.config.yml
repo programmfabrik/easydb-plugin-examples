@@ -1,0 +1,24 @@
+plugin:
+  name: example-plugin
+  version: 1.0
+  url: https://github.com/programmfabrik/easydb-plugin-examples
+  displayname:
+    de-DE: Example Plugin
+    en-US: Example Plugin
+  info:
+    de-DE: Das Beispiel Plugin für easydb
+    en-US: An example plugin for easydb
+  webfrontend:
+    url: example-plugin.js
+    l10n: l10n/
+
+base_config:
+  - name: example_plugin
+    group: example
+
+python-2:
+  file: src/server/example.py
+
+system_rights:
+  - name: example
+    comment: this right was added by a the example plugin

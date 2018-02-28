@@ -1,0 +1,4 @@
+key,de-DE,en-US
+example.tray.app.button|icon,fa-question,fa-question
+example.tray.app.button|tooltip,Klick mich!,Click me
+example.tray.app.thank_you.md,Danke dass Sie **easydb** benutzen!,Thanks for using **easydb**!

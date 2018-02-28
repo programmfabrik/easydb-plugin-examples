@@ -1,8 +1,0 @@
-plugin:
-  name: example
-  version: 1.0
-  server:
-    api-version:
-      require: 1
-python-2:
-  file: simple-example.py
