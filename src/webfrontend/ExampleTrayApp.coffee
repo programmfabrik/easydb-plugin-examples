@@ -12,5 +12,3 @@ class ExampleTrayApp extends TrayApp
 ez5.session_ready ->
 	ez5.tray.registerApp(new ExampleTrayApp())
 
-
-CUI.alert(text: "yo tray app")

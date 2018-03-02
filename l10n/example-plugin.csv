@@ -2,3 +2,17 @@ key,de-DE,en-US
 example.tray.app.button|icon,fa-question,fa-question
 example.tray.app.button|tooltip,Klick mich!,Click me
 example.tray.app.thank_you.md,Danke dass Sie **easydb** benutzen!,Thanks for using **easydb**!
+root.menu.example.app.label|icon,fa-bath,fa-bath
+root.menu.example.app.label|tooltip,Beispiel Plugin,Example Plugin
+root.menu.example.app.label|text,Beispiel Plugin,Example Plugin
+example.root.app.button.base_config|text,Basis Konfiguration,Base Config
+example.root.app.button.system_right|text,System Rechte,System Rights
+example.root.app.button.server_echo|text,Server API: echo,Server API: echo
+example.root.app.button.server_session|text,Server API: session,Server API: session
+example.root.app.button.server_config|text,Server API: config,Server API: config
+example.root.app.button.server_tmp|text,Server API: tmp,Server API: tmp
+example.root.app.button.server_instance|text,Server API: instance,Server API: instance
+example.app.label,Beispiel App,Example App
+example.detail.sidebar.plugin.button|icon,fa-code,fa-code
+type.extension.custom.settings.config.parameter.base.ex_text_online.ex_1.label,Mehr Info?,More Info?
+example.export.manager.plugin.name,Beispiel Export Plugin,Example Export Plugin

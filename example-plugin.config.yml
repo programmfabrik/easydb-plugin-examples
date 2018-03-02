@@ -6,15 +6,117 @@ plugin:
     de-DE: Example Plugin
     en-US: Example Plugin
   info:
-    de-DE: Das Beispiel Plugin für easydb
-    en-US: An example plugin for easydb
+    de-DE: "Das Beispiel Plugin für **easydb**."
+    en-US: "An example plugin for **easydb**."
   webfrontend:
     url: example-plugin.js
     l10n: l10n/
+    css: example-plugin.css
+    type_extension:
+      mask:
+        text_oneline:
+          - name: "ex_text_online"
+            parameters:
+              ex_1:
+                type: "text"
+        eas:
+          - name: ex_eas
+            parameters:
+              show:
+                type: bool
+                default: true
+
+system_rights:
+  - name: example
+    comment: "example system right 2"
+
+custom_types:
+  slider:
+    config:
+      schema:
+        - name: range
+          parameters:
+            from:
+              type: int
+            to:
+              type: int
+      mask:
+        - name: appearance
+          parameters:
+            color:
+              type: select
+              options: ["red", "blue", "green"]
+
 
 base_config:
   - name: example_plugin
     group: example
+    parameters:
+      text:
+        type: text
+        position: 0
+      int:
+        type: int
+        position: 1
+      email:
+        type: email
+        position: 2
+      text_multi:
+        type: text-multiline
+        position: 3
+      text_l10n:
+        type: text-l10n
+        position: 4
+      text_l10n_multi:
+        type: text-l10n-multiline
+        position: 5
+      string_list:
+        type: string-list
+        choices:
+          - one
+          - two
+          - three
+        position: 6
+      string_list_sort:
+        type: string-list-sort
+        choice_label: "list-sort.choice"
+        choices:
+          - one
+          - two
+          - three
+        position: 7
+      select:
+        type: select
+        options:
+          - apple
+          - banana
+          - kiwi
+      date:
+        type: text
+        plugin_type: date
+        position: 8
+      tag_select:
+        type: tag-select
+        position: 9
+      tagfilter_select:
+        type: tagfilter-select
+        position: 10
+      profile_mapping:
+        type: int
+        plugin_type: profile_mapping_select
+        position: 11
+      easydb_group:
+        type: int
+        plugin_type: group_easydb_select
+        position: 12
+      bool:
+        type: bool
+        position: 13
+      example_base_config:
+        type: text
+        plugin_type: example-base-config
+        store_as_json: true
+        position: 14
 
 python-2:
   file: src/server/example.py
