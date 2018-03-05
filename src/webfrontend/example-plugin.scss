@@ -1,3 +1,31 @@
 .ez5-example-plugin-hl-left {
 	margin: 10px;
 }
+
+
+.ez5-example-custom-data-type {
+	&.ez5-example-custom-data-type--red {
+		.cui-slider-track-visual {
+			background: red;
+		}
+		.cui-label-content {
+			color: red;
+		}
+	}
+	&.ez5-example-custom-data-type--green {
+		.cui-slider-track-visual {
+			background: green;
+		}
+		.cui-label-content {
+			color: green;
+		}
+	}
+	&.ez5-example-custom-data-type--blue {
+		.cui-slider-track-visual {
+			background: blue;
+		}
+		.cui-label-content {
+			color: blue;
+		}
+	}
+}

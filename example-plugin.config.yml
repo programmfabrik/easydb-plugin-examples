@@ -38,8 +38,10 @@ custom_types:
           parameters:
             from:
               type: int
+              position: 0
             to:
               type: int
+              position: 1
       mask:
         - name: appearance
           parameters:

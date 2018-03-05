@@ -16,3 +16,12 @@ example.app.label,Beispiel App,Example App
 example.detail.sidebar.plugin.button|icon,fa-code,fa-code
 type.extension.custom.settings.config.parameter.base.ex_text_online.ex_1.label,Mehr Info?,More Info?
 example.export.manager.plugin.name,Beispiel Export Plugin,Example Export Plugin
+example.custom.data.type.name,Beispiel Slider,Example Slider
+example.custom.data.type.datamodel_info,Werte: %(from)s - %(to)s,Values: %(from)s - %(to)s
+example.custom.data.type.config.parameter.schema.range.from.label,Wert von,Value from
+example.custom.data.type.config.parameter.schema.range.to.label,Wert bis,Value to
+example.custom.data.type.config.parameter.mask.appearance.color.label,Farbe,Color
+example.custom.data.type.config.option.mask.appearance.color.red,Rot,Red
+example.custom.data.type.config.option.mask.appearance.color.blue,Blau,Blue
+example.custom.data.type.config.option.mask.appearance.color.green,Grün,Green
+example.custom.data.type.input.value,Wert,Value
