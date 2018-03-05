@@ -5,18 +5,41 @@ class ExampleExportManagerPlugin extends ExportManagerPlugin
 	nameLocalized: ->
 		$$("example.export.manager.plugin.name")
 
-	# renderForm: ->
-
 	getExportData: ->
 		exportData = super()
-		console.debug "export data:", exportData
 
-		# exportData.produce_options.eaf_type = @data.eaf_type
-		exportData
+		if not exportData.produce_options
+			exportData.produce_options = {}
+		exportData.produce_options.with_tags = @__data.with_tags
+
+		return exportData
+
+	renderForm: ->
+		@__data = @__initData()
+
+		form = new CUI.Form
+			data: @__data
+			fields: [
+				type: CUI.Checkbox
+				name: "with_tags"
+				form:
+					label: $$("example.export.manager.form.with_tags.label")
+				text: $$("example.export.manager.form.with_tags.text")
+			]
+		return form.start()
 
 	saveAllowed: ->
 		true
 
+	__initData: ->
+		data =
+			with_tags: false
+
+		exportData = @_export.data?.export
+		if exportData
+			data.with_tags = exportData.produce_options?.with_tags
+
+		return data
+
 ez5.session_ready ->
 	ExportManager.registerPlugin(new ExampleExportManagerPlugin())
-
