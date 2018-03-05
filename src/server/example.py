@@ -175,15 +175,13 @@ def pre_update(easydb_context, easydb_info):
 def export_as_yml(easydb_context, parameters):
 	logger = easydb_context.get_logger('example-plugin.export_as_yml')
 
-	# check if the export definition fits to this plugin
-	export_definition = get_json_value(
-		easydb_context.get_exporter().getExport(),
-		"export.produce_options.plugin", False)
-	if str(export_definition) != "example_plugin":
-		return
-
 	# get the exporter definition
 	exporter = easydb_context.get_exporter()
+
+	# check if the export definition fits to this plugin
+	export_definition = get_json_value(exporter.getExport(), "export.produce_options.plugin", False)
+	if str(export_definition) != "example_plugin":
+		return
 
 	# load exported files (need to be exported as JSON files)
 	export_dir = exporter.getFilesPath()
@@ -199,7 +197,7 @@ def export_as_yml(easydb_context, parameters):
 		file_path = str(get_json_value(f, "path", False))
 		if file_path.lower().endswith(".json"):
 			# absolute path to the original file
-			file_path = os.path.abspath(export_dir + "/" + f["path"])
+			file_path = os.path.abspath(export_dir + "/" + file_path)
 
 			# path of the new file
 			file_name = str(f["path"].split(".")[0] + ".yml")
@@ -229,13 +227,13 @@ def export_as_yml(easydb_context, parameters):
 						# add the new YML file to the export so it can be opened or downloaded from the frontend
 						exporter.addFile(tmp_filename, file_name)
 
-						# remove the old JSON file from the export
-						exporter.removeFile(str(f["path"]))
+						# remove the old JSON file
+						exporter.removeFile(f["path"])
 
 				else:
 					logger.debug("Found no 'objects' array")
 			except Exception as e:
-				logger.warn("Could not convert JSON to YML: %s", % str(e))
+				logger.warn("Could not convert JSON to YML: %s" % str(e))
 
 
 # method that is called when API Endpoint <server>/api/plugin/base/example-plugin/config is called
