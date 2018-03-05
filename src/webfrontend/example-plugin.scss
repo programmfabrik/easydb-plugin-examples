@@ -2,7 +2,6 @@
 	margin: 10px;
 }
 
-
 .ez5-example-custom-data-type {
 	&.ez5-example-custom-data-type--red {
 		.cui-slider-track-visual {
@@ -28,4 +27,22 @@
 			color: blue;
 		}
 	}
+}
+
+.asset-detail-exampleassetdetailpdf {
+	background-color: #272727;
+}
+
+.ez5-example-asset-detail-filename {
+	position: absolute;
+    left: 10px;
+    line-height: 22px;
+}
+
+.ez5-example-asset-detail-pdf {
+	position: absolute;
+	top: 42px;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }

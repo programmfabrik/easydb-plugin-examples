@@ -25,3 +25,5 @@ example.custom.data.type.config.option.mask.appearance.color.red,Rot,Red
 example.custom.data.type.config.option.mask.appearance.color.blue,Blau,Blue
 example.custom.data.type.config.option.mask.appearance.color.green,Grün,Green
 example.custom.data.type.input.value,Wert,Value
+example.asset.detail.pdf|icon,fa-file-pdf-o,fa-file-pdf-o
+example.asset.detail.pdf|text,PDF,PDF

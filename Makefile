@@ -22,6 +22,7 @@ SCSS_FILES = src/webfrontend/example-plugin.scss
 COFFEE_FILES = \
 	src/webfrontend/ExampleTrayApp.coffee \
 	src/webfrontend/ExampleBaseConfig.coffee \
+	src/webfrontend/ExampleAssetDetailPDF.coffee \
 	src/webfrontend/ExampleCustomDataType.coffee \
 	src/webfrontend/ExampleDetailSidebarPlugin.coffee \
 	src/webfrontend/ExampleExportManagerPlugin.coffee \
