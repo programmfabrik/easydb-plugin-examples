@@ -1,11 +1,15 @@
+# coding=utf8
+
+import os
 import json
+import yaml
 import datetime
 from context import EasydbException
 from context import InvalidValueError
 from context import get_json_value
 
 
-## called from easydb
+# called from easydb
 def easydb_server_start(easydb_context):
 	# called when server starts (just once)
 	logger = easydb_context.get_logger('example-plugin')
@@ -24,6 +28,10 @@ def easydb_server_start(easydb_context):
 	# callback registered in the server as 'db_pre_update'
 	# method name that is called: 'pre_update'
 	easydb_context.register_callback('db_pre_update', {'callback': 'pre_update'})
+
+	# register callback that are called after data was exported / transported
+	# export objects as YML
+	easydb_context.register_callback('export_produce', {'callback': 'export_as_yml'})
 
 
 # helper method to generate a unique id for an object
@@ -160,6 +168,74 @@ def pre_update(easydb_context, easydb_info):
 	# always return if no exception was thrown, so the server and frontend are not blocked
 	print json.dumps(data, indent=4)
 	return data
+
+
+# called after data was exported
+# load the exported json files and save the content as YML
+def export_as_yml(easydb_context, parameters):
+	logger = easydb_context.get_logger('example-plugin.export_as_yml')
+
+	# check if the export definition fits to this plugin
+	export_definition = get_json_value(
+		easydb_context.get_exporter().getExport(),
+		"export.produce_options.plugin", False)
+	if str(export_definition) != "example_plugin":
+		return
+
+	# get the exporter definition
+	exporter = easydb_context.get_exporter()
+
+	# load exported files (need to be exported as JSON files)
+	export_dir = exporter.getFilesPath()
+	logger.debug("Export Dir: %s" % export_dir)
+
+	files = exporter.getFiles()
+	if not isinstance(files, list) or len(files) < 1:
+		logger.warn("No valid file list!")
+		return
+
+	# iterate over the definitions of the exported files and parse the json content
+	for f in files:
+		file_path = str(get_json_value(f, "path", False))
+		if file_path.lower().endswith(".json"):
+			# absolute path to the original file
+			file_path = os.path.abspath(export_dir + "/" + f["path"])
+
+			# path of the new file
+			file_name = str(f["path"].split(".")[0] + ".yml")
+
+			logger.debug("Converting JSON file %s to YML" % file_path)
+
+			try:
+				file = open(file_path, "r")
+				content = json.loads(file.read().decode('utf-8'))
+				file.close()
+
+				# convert the objects that are defined in a json array to YML and save it in a file next to the original file
+				objects = get_json_value(content, "objects", False)
+				if isinstance(objects, list) and len(objects) > 0:
+
+					# save the file in the temporary folder and add it later to the exported files
+					tmp_filename = os.path.abspath("%s/../tmp/objects.yml" % export_dir)
+
+					with open(tmp_filename, "w") as yml_file:
+						yaml.safe_dump({
+							"objects": objects
+						}, yml_file, default_flow_style = False)
+						yml_file.close()
+
+						logger.debug("Saved objects as %s" % tmp_filename)
+
+						# add the new YML file to the export so it can be opened or downloaded from the frontend
+						exporter.addFile(tmp_filename, file_name)
+
+						# remove the old JSON file from the export
+						exporter.removeFile(str(f["path"]))
+
+				else:
+					logger.debug("Found no 'objects' array")
+			except Exception as e:
+				logger.warn("Could not convert JSON to YML: %s", % str(e))
 
 
 # method that is called when API Endpoint <server>/api/plugin/base/example-plugin/config is called
