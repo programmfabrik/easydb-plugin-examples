@@ -65,7 +65,7 @@ def perform_search_easydb(easydb_context, query, logger = None):
 	except Exception as e:
 		logger.error("Could not get user id from session: %s" % e)
 		return None
-	search_result = easydb_context.search("user", user_id, search_query)
+	search_result = easydb_context.search("user", user_id, query)
 	if logger is not None:
 		logger.debug("Search Result: %s" % json.dumps(search_result, indent = 4))
 
