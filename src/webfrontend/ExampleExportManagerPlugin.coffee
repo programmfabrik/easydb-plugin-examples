@@ -12,6 +12,9 @@ class ExampleExportManagerPlugin extends ExportManagerPlugin
 			exportData.produce_options = {}
 		exportData.produce_options.with_tags = @__data.with_tags
 
+		exportData.json = @__data.type == "json"
+		exportData.xml = @__data.type == "xml"
+
 		return exportData
 
 	renderForm: ->
@@ -25,6 +28,17 @@ class ExampleExportManagerPlugin extends ExportManagerPlugin
 				form:
 					label: $$("example.export.manager.form.with_tags.label")
 				text: $$("example.export.manager.form.with_tags.text")
+			,
+				type: CUI.Select
+				name: "type"
+				form:
+					label: $$("example.export.manager.form.type.label")
+				text: $$("example.export.manager.form.type.text")
+				options: [
+					value: "json",
+				,
+					value: "xml"
+				]
 			]
 		return form.start()
 
@@ -34,10 +48,14 @@ class ExampleExportManagerPlugin extends ExportManagerPlugin
 	__initData: ->
 		data =
 			with_tags: false
+			type: "json"
 
 		exportData = @_export.data?.export
 		if exportData
 			data.with_tags = exportData.produce_options?.with_tags
+
+			if exportData.xml
+				data.type = "xml"
 
 		return data
 
