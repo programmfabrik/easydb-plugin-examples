@@ -29,7 +29,7 @@ class ExampleCustomDataType extends CustomDataType
 		mask_settings = @getCustomMaskSettings()
 		[
 			"ez5-example-custom-data-type"
-			"ez5-example-custom-data-type--"+mask_settings.appearance.color
+			"ez5-example-custom-data-type--"+(mask_settings.appearance?.color or "red")
 		].join(" ")
 
 	renderEditorInput: (data, top_level_data, opts) ->
