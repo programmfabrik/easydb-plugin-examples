@@ -145,11 +145,15 @@ def pre_update(easydb_context, easydb_info):
 
 	# get the object data
 	data = get_json_value(easydb_info, "data")
-	logger.debug("Object Data: %s" % json.dumps(data, indent = 4))
 	logger.debug("%d Objects" % len(data))
 
 	# check the data, and if there is invalid data, throw an InvalidValueError
 	for i in range(len(data)):
+
+		# check if the objecttype is correct
+		if data[i]["_objecttype"] != "medium":
+			logger.debug("Ignoring object type %s" % data[i]["_objecttype"])
+			continue
 
 		# depending on the mask, check if mandatory fields are set and set the linked object medienart
 		if data[i]["_mask"] == "medium_cd":
@@ -299,6 +303,23 @@ def check_expiration_date(easydb_context):
 	# connect to the database
 	connection = easydb_context.db_connect('check_expiration_date')
 
+	# perform a check if the objecttype 'medium' exists
+
+	sql = """
+		SELECT EXISTS(
+			SELECT * FROM information_schema.tables
+			WHERE table_schema = 'public' AND table_name = 'medium'
+		) AS medium_exists;
+	"""
+
+	# perform the request and save the result
+	connection.cursor().execute(sql)
+	result = connection.cursor().fetchone()
+
+	if result["medium_exists"] != u"t":
+		logger.debug("objecttype 'medium' does not exist, skip")
+		return
+
 	# load the configuration
 	config = easydb_context.get_config(connection)
 
@@ -310,9 +331,6 @@ def check_expiration_date(easydb_context):
 		date = datetime.now() + relativedelta(days = days_in_future)
 		date_str = date.strftime("%Y-%m-%d")
 
-		# get a database cursor
-		cursor = connection.cursor()
-
 		# build the Postgres statement
 		sql = """
 			SELECT m."id:pkey", m.titel, m.identifier, m.ablaufdatum, m.":owner:ez_user:id",
@@ -321,7 +339,7 @@ def check_expiration_date(easydb_context):
 			FROM medium m JOIN ez_user u ON m.":owner:ez_user:id" = u."ez_user:id"
 			AND ablaufdatum <= '%s'
 			JOIN "ez_user:email" e ON e."ez_user:id" = u."ez_user:id"
-			AND e.is_primary AND e.use_for_email AND e.send_email AND address IS NOT NULL
+			AND e.is_primary AND e.use_for_email AND e.send_email AND address IS NOT NULL;
 		"""
 
 		# perform the request and save the result
