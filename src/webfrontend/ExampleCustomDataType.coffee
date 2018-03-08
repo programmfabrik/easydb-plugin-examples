@@ -51,6 +51,7 @@ class ExampleCustomDataType extends CustomDataType
 					label: $$("example.custom.data.type.input.value")
 				type: CUI.Slider
 				name: "value"
+				# from + to
 			,
 				type: CUI.Input
 				name: "description"
@@ -65,7 +66,8 @@ class ExampleCustomDataType extends CustomDataType
 
 	getSaveData: (data, save_data, opts) ->
 		cdata = data[@name()] or data._template?[@name()]
-		save_data[@name()] = cdata
+
+		save_data[@name()] = CUI.util.copyObject(cdata, true)
 		return
 
 

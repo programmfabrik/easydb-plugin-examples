@@ -23,6 +23,7 @@ COFFEE_FILES = \
 	src/webfrontend/ExampleTrayApp.coffee \
 	src/webfrontend/ExampleBaseConfig.coffee \
 	src/webfrontend/ExampleAssetDetailPDF.coffee \
+	src/webfrontend/ExampleAssetDetail3D.coffee \
 	src/webfrontend/ExampleCustomDataType.coffee \
 	src/webfrontend/ExampleDetailSidebarPlugin.coffee \
 	src/webfrontend/ExampleExportManagerPlugin.coffee \

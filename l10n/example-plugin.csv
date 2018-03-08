@@ -27,3 +27,8 @@ example.custom.data.type.config.option.mask.appearance.color.green,Grün,Green
 example.custom.data.type.input.value,Wert,Value
 example.asset.detail.pdf|icon,fa-file-pdf-o,fa-file-pdf-o
 example.asset.detail.pdf|text,PDF,PDF
+example.export.manager.form.with_tags.label,YML mit Tags exportieren,Export YML with tags
+example.export.manager.form.with_tags.text,YML Datei mit Python-spezifischen Tags erzeugen,Create YML file with python specific tags
+server.config.group.system.example.title,Beispiel,Example
+example.asset.detail.360degrees|text,360°,360°
+example.asset.detail.360degrees|icon,fa-eye,fa-eye
