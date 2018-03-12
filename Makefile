@@ -4,11 +4,13 @@ INSTALL_FILES = \
 	$(WEB)/l10n/cultures.json \
 	$(WEB)/l10n/de-DE.json \
 	$(WEB)/l10n/en-US.json \
-	$(WEB)/l10n/es-ES.json \
-	$(WEB)/l10n/it-IT.json \
 	$(CSS) \
 	$(WEB)/example-plugin.js \
 	example-plugin.config.yml
+
+# XXX: unavailable languages
+#	$(WEB)/l10n/es-ES.json \
+#	$(WEB)/l10n/it-IT.json \
 
 L10N_FILES = l10n/example-plugin.csv
 
