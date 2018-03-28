@@ -35,10 +35,12 @@ class ExampleAssetDetail3D extends AssetDetail
 
 
 ez5.session_ready =>
-	scriptNode = CUI.dom.element "SCRIPT",
-		src: "https://aframe.io/releases/0.7.1/aframe.min.js"
-		type: "text/javascript"
-		charset: "utf-8"
+	# this moved to easydb-a-frame-plugin
+	#
+	# scriptNode = CUI.dom.element "SCRIPT",
+	# 	src: "https://aframe.io/releases/0.7.1/aframe.min.js"
+	# 	type: "text/javascript"
+	# 	charset: "utf-8"
 
-	document.head.appendChild(scriptNode)
-	AssetBrowser.plugins.registerPlugin(ExampleAssetDetail3D)
+	# document.head.appendChild(scriptNode)
+	# AssetBrowser.plugins.registerPlugin(ExampleAssetDetail3D)
