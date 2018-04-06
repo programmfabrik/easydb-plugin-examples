@@ -21,6 +21,10 @@ class ExampleDetailSidebarPlugin extends DetailSidebarPlugin
 	hideDetail: ->
 		@_detailSidebar.mainPane.empty("top")
 
+	# turn button red, when rendering is done
+	renderObjectDetailSidebar: ->
+		@getButton().addClass("ez5-example-detail-sidebar-plugin-btn-red")
+
 	showDetail: ->
 		obj = @_detailSidebar.object
 		for field in obj.mask.getFields("all")
