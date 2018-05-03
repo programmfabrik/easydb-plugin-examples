@@ -150,6 +150,10 @@ def pre_update(easydb_context, easydb_info):
 	# check the data, and if there is invalid data, throw an InvalidValueError
 	for i in range(len(data)):
 
+		# check if the objecttype is set
+		if "_objecttype" not in data[i]:
+			continue
+
 		# check if the objecttype is correct
 		if data[i]["_objecttype"] != "medium":
 			logger.debug("Ignoring object type %s" % data[i]["_objecttype"])
