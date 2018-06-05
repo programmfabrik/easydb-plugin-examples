@@ -343,7 +343,7 @@ def check_expiration_date(easydb_context):
 			FROM medium m JOIN ez_user u ON m.":owner:ez_user:id" = u."ez_user:id"
 			AND ablaufdatum <= '%s'
 			JOIN "ez_user:email" e ON e."ez_user:id" = u."ez_user:id"
-			AND e.is_primary AND e.use_for_email AND e.send_email AND address IS NOT NULL;
+			AND e.is_primary AND e.send_email AND address IS NOT NULL;
 		"""
 
 		# perform the request and save the result
@@ -426,7 +426,7 @@ def check_expiration_date(easydb_context):
 
 			mail = None
 			if mails_to_send[adr]["language"] == "de-DE":
-				mail = "Hallo %s,\n\ndie folgenden Objekte laufen innerhalb der nächsten %d Tage ab:\n\n%s\n\nMit freundlichen Gruessen"
+				mail = "Hallo %s,\n\ndie folgenden Objekte laufen innerhalb der naechsten %d Tage ab:\n\n%s\n\nMit freundlichen Gruessen"
 			else:
 				mail = "Hello %s,\n\nthe following objects expire during the next %d days:\n\n%s\n\nRegards"
 
@@ -439,6 +439,21 @@ def check_expiration_date(easydb_context):
 			))
 
 			# TODO send the mail instead of logging the mail text
+
+			# log a custom event to add the sending of the mail to the event log of the server
+			db_name = get_json_value(easydb_context.get_instance(), "db-name")
+			db_conn = easydb_context.db_connect(db_name)
+			easydb_context.log_event(
+				db_conn,
+				'EASYDB_EXAMPLE_PLUGIN_EVENT',
+				{
+					'medium_id': identifier,
+					'date': ablaufdatum.strftime("%Y-%m-%d"),
+					'title': titel,
+					'owner_name': mails_to_send[adr]["name"]
+				}
+			)
+			db_conn.commit()
 
 		# sleep for one hour
 		sleep(60 * 60)
