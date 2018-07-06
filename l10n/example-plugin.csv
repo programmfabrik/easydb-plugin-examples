@@ -32,3 +32,5 @@ example.export.manager.form.with_tags.text,YML Datei mit Python-spezifischen Tag
 server.config.group.system.example.title,Beispiel,Example
 example.asset.detail.360degrees|text,360°,360°
 example.asset.detail.360degrees|icon,fa-eye,fa-eye
+acl.right.manager.group.system.plugin.example-plugin.example,Beispiel Plugin,Example Plugin
+server.right.system.plugin.example-plugin.example,Sichtbar,Visible
