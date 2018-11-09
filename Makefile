@@ -39,12 +39,6 @@ include easydb-library/tools/base-plugins.make
 
 build: code css
 
-$(CSS): $(SCSS_FILES)
-	mkdir -p $(dir $@)
-	cat $(SCSS_FILES) | $(call_scss) > $(CSS)
-
 code: $(JS) $(L10N)
-
-css: $(CSS)
 
 clean: clean-base

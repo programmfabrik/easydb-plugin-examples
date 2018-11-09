@@ -112,4 +112,3 @@ class ExampleRootApp extends RootMenuApp
 
 ez5.session_ready =>
 	ez5.rootMenu.registerApp(ExampleRootApp)
-	ez5.pluginManager.getPlugin("example-plugin").loadCss()
