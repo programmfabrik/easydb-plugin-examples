@@ -17,8 +17,6 @@ L10N_FILES = l10n/example-plugin.csv
 L10N_GOOGLE_KEY = 1Z3UPJ6XqLBp-P8SUf-ewq4osNJ3iZWKJB83tc6Wrfn0
 L10N_GOOGLE_GID = 1105524345
 
-CSS = $(WEB)/example-plugin.css
-
 SCSS_FILES = src/webfrontend/example-plugin.scss
 
 COFFEE_FILES = \
@@ -30,8 +28,6 @@ COFFEE_FILES = \
 	src/webfrontend/ExampleDetailSidebarPlugin.coffee \
 	src/webfrontend/ExampleExportManagerPlugin.coffee \
 	src/webfrontend/ExampleRootApp.coffee
-
-call_scss = sass --scss --no-cache --sourcemap=inline
 
 all: build
 
