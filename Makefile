@@ -25,6 +25,8 @@ COFFEE_FILES = \
 	src/webfrontend/ExampleAssetDetailPDF.coffee \
 	src/webfrontend/ExampleAssetDetail3D.coffee \
 	src/webfrontend/ExampleCustomDataType.coffee \
+	src/webfrontend/ExampleMaskSplitterSimple.coffee \
+	src/webfrontend/ExampleMaskSplitterBlock.coffee \
 	src/webfrontend/ExampleDetailSidebarPlugin.coffee \
 	src/webfrontend/ExampleExportManagerPlugin.coffee \
 	src/webfrontend/ExampleRootApp.coffee

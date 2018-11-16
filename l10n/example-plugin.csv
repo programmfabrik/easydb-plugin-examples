@@ -1,36 +1,43 @@
-key,de-DE,en-US
-example.tray.app.button|icon,fa-question,fa-question
-example.tray.app.button|tooltip,Klick mich!,Click me
-example.tray.app.thank_you.md,Danke dass Sie **easydb** benutzen!,Thanks for using **easydb**!
-root.menu.example.app.label|icon,fa-bath,fa-bath
-root.menu.example.app.label|tooltip,Beispiel Plugin,Example Plugin
-root.menu.example.app.label|text,Beispiel Plugin,Example Plugin
-example.root.app.button.base_config|text,Basis Konfiguration,Base Config
-example.root.app.button.system_right|text,System Rechte,System Rights
-example.root.app.button.server_echo|text,Server API: echo,Server API: echo
-example.root.app.button.server_session|text,Server API: session,Server API: session
-example.root.app.button.server_config|text,Server API: config,Server API: config
-example.root.app.button.server_tmp|text,Server API: tmp,Server API: tmp
-example.root.app.button.server_instance|text,Server API: instance,Server API: instance
-example.app.label,Beispiel App,Example App
-example.detail.sidebar.plugin.button|icon,fa-code,fa-code
-type.extension.custom.settings.config.parameter.base.ex_text_online.ex_1.label,Mehr Info?,More Info?
-example.export.manager.plugin.name,Beispiel Export Plugin,Example Export Plugin
-example.custom.data.type.name,Beispiel Slider,Example Slider
-example.custom.data.type.datamodel_info,Werte: %(from)s - %(to)s,Values: %(from)s - %(to)s
-example.custom.data.type.config.parameter.schema.range.from.label,Wert von,Value from
-example.custom.data.type.config.parameter.schema.range.to.label,Wert bis,Value to
-example.custom.data.type.config.parameter.mask.appearance.color.label,Farbe,Color
-example.custom.data.type.config.option.mask.appearance.color.red,Rot,Red
-example.custom.data.type.config.option.mask.appearance.color.blue,Blau,Blue
-example.custom.data.type.config.option.mask.appearance.color.green,Grün,Green
-example.custom.data.type.input.value,Wert,Value
-example.asset.detail.pdf|icon,fa-file-pdf-o,fa-file-pdf-o
-example.asset.detail.pdf|text,PDF,PDF
-example.export.manager.form.with_tags.label,YML mit Tags exportieren,Export YML with tags
-example.export.manager.form.with_tags.text,YML Datei mit Python-spezifischen Tags erzeugen,Create YML file with python specific tags
-server.config.group.system.example.title,Beispiel,Example
-example.asset.detail.360degrees|text,360°,360°
-example.asset.detail.360degrees|icon,fa-eye,fa-eye
-acl.right.manager.group.system.plugin.example-plugin.example,Beispiel Plugin,Example Plugin
-server.right.system.plugin.example-plugin.example,Sichtbar,Visible
+,key,de-DE,en-US
+,example.tray.app.button|icon,fa-question,fa-question
+,example.tray.app.button|tooltip,Klick mich!,Click me
+,example.tray.app.thank_you.md,Danke dass Sie **easydb** benutzen!,Thanks for using **easydb**!
+,root.menu.example.app.label|icon,fa-bath,fa-bath
+,root.menu.example.app.label|tooltip,Beispiel Plugin,Example Plugin
+,root.menu.example.app.label|text,Beispiel Plugin,Example Plugin
+,example.root.app.button.base_config|text,Basis Konfiguration,Base Config
+,example.root.app.button.system_right|text,System Rechte,System Rights
+,example.root.app.button.server_echo|text,Server API: echo,Server API: echo
+,example.root.app.button.server_session|text,Server API: session,Server API: session
+,example.root.app.button.server_config|text,Server API: config,Server API: config
+,example.root.app.button.server_tmp|text,Server API: tmp,Server API: tmp
+,example.root.app.button.server_instance|text,Server API: instance,Server API: instance
+,example.app.label,Beispiel App,Example App
+,example.detail.sidebar.plugin.button|icon,fa-code,fa-code
+,type.extension.custom.settings.config.parameter.base.ex_text_online.ex_1.label,Mehr Info?,More Info?
+,example.export.manager.plugin.name,Beispiel Export Plugin,Example Export Plugin
+,example.custom.data.type.name,Beispiel Slider,Example Slider
+,example.custom.data.type.datamodel_info,Werte: %(from)s - %(to)s,Values: %(from)s - %(to)s
+,example.custom.data.type.config.parameter.schema.range.from.label,Wert von,Value from
+,example.custom.data.type.config.parameter.schema.range.to.label,Wert bis,Value to
+,example.custom.data.type.config.parameter.mask.appearance.color.label,Farbe,Color
+,example.custom.data.type.config.option.mask.appearance.color.red,Rot,Red
+,example.custom.data.type.config.option.mask.appearance.color.blue,Blau,Blue
+,example.custom.data.type.config.option.mask.appearance.color.green,Grün,Green
+,example.custom.data.type.input.value,Wert,Value
+,example.asset.detail.pdf|icon,fa-file-pdf-o,fa-file-pdf-o
+,example.asset.detail.pdf|text,PDF,PDF
+,example.export.manager.form.with_tags.label,YML mit Tags exportieren,Export YML with tags
+,example.export.manager.form.with_tags.text,YML Datei mit Python-spezifischen Tags erzeugen,Create YML file with python specific tags
+,server.config.group.system.example.title,Beispiel,Example
+,example.asset.detail.360degrees|text,360°,360°
+,example.asset.detail.360degrees|icon,fa-eye,fa-eye
+,acl.right.manager.group.system.plugin.example-plugin.example,Beispiel Plugin,Example Plugin
+,server.right.system.plugin.example-plugin.example,Sichtbar,Visible
+,example.mask.splitter.simple.name,Beispiel Splitter (einfach),Example Splitter (simple)
+,example.mask.splitter.block.name,Beispiel Splitter (block),Example Splitter (block)
+,example.mask.splitter.simple.title|text,Einfacher Splitter,Simple Splitter
+,example.mask.splitter.block.title|text,Block Splitter,Block Splitter
+,example.mask.splitter.simple.option.title,Titel: %(value)s,Title: %(value)s
+,example.mask.splitter.block.option.color,%(value)s,%(value)s
+Don't show this option,example.mask.splitter.block.option.style,-,-
