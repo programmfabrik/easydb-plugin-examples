@@ -8,6 +8,8 @@ plugin:
   info:
     de-DE: "Das Beispiel Plugin für **easydb**."
     en-US: "An example plugin for **easydb**."
+  webhooks:
+    - name: example
   webfrontend:
     url: example-plugin.js
     l10n: l10n/

@@ -19,6 +19,9 @@ L10N_GOOGLE_GID = 1105524345
 
 SCSS_FILES = src/webfrontend/example-plugin.scss
 
+WEBHOOK_NAME = example
+WEBHOOK_FILES = src/webhooks/Example.coffee
+
 COFFEE_FILES = \
 	src/webfrontend/ExampleTrayApp.coffee \
 	src/webfrontend/ExampleBaseConfig.coffee \
@@ -37,6 +40,6 @@ include easydb-library/tools/base-plugins.make
 
 build: code css
 
-code: $(JS) $(L10N)
+code: $(JS) $(L10N) $(WEBHOOK_JS)
 
 clean: clean-base
