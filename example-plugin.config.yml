@@ -98,32 +98,33 @@ base_config:
           - apple
           - banana
           - kiwi
+        position: 8
       date:
         type: text
         plugin_type: date
-        position: 8
+        position: 9
       tag_select:
         type: tag-select
-        position: 9
+        position: 10
       tagfilter_select:
         type: tagfilter-select
-        position: 10
+        position: 11
       profile_mapping:
         type: int
         plugin_type: profile_mapping_select
-        position: 11
+        position: 12
       easydb_group:
         type: int
         plugin_type: group_easydb_select
-        position: 12
+        position: 13
       bool:
         type: bool
-        position: 13
+        position: 14
       example_base_config:
         type: text
         plugin_type: example-base-config
         store_as_json: true
-        position: 14
+        position: 15
 
 python-2:
   file: src/server/example.py
