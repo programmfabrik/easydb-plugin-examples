@@ -45,9 +45,9 @@ class ez5.ExampleMaskSplitterBlock extends CustomMaskSplitter
 
 		console.debug @, "ExampleMaskSplitterBlock.renderField", opts, color, style
 
-		div = CUI.dom.element("div")
+		div = CUI.dom.element("div", class: "ez5-example-mask-splitter")
 		CUI.dom.setStyle div,
-			border: "5px "+style+" "+color
+			border: "4px "+style+" "+color
 		return CUI.dom.append(div, @renderInnerFields(opts))
 
 	isEnabledForNested: ->
