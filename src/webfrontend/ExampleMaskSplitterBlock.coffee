@@ -50,6 +50,9 @@ class ez5.ExampleMaskSplitterBlock extends CustomMaskSplitter
 			border: "5px "+style+" "+color
 		return CUI.dom.append(div, @renderInnerFields(opts))
 
+	isEnabledForNested: ->
+		return true
+
 
 
 MaskSplitter.plugins.registerPlugin(ez5.ExampleMaskSplitterBlock)

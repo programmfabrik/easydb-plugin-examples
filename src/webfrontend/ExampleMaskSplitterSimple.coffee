@@ -14,4 +14,7 @@ class ez5.ExampleMaskSplitterSimple extends CustomMaskSplitter
 	renderField: (opts) ->
 		return new CUI.Label(appearance: "title", text: @getDataOptions().title or "<no title>")
 
+	isEnabledForNested: ->
+		return true
+
 MaskSplitter.plugins.registerPlugin(ez5.ExampleMaskSplitterSimple)
