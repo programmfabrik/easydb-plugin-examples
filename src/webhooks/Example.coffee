@@ -1,17 +1,23 @@
-ez5 = require('ez5')
 fs = require('fs')
+asciify = require('asciify')
 
 class Example
 	main: (info) ->
 		info.paths = module.paths
 		info.env = process.env
 
-		dumpfile = info.request.query_string_parameters?.dump_request?[0]
+		queryStringParameters = info.request.query_string_parameters
+		dumpfile = queryStringParameters?.dump_request?[0]
 		if dumpfile
 			fs.appendFileSync(dumpfile, info.request.body)
 			body = "Info was successfully stored into file: "+dumpfile+"."
-			respondSuccess(body)
+			ez5.respondSuccess(body)
+		else if asciiText = queryStringParameters?.ascii?[0]
+			text = asciiText or "Hello!"
+			asciify( text, color:'green', (err, res) =>
+				ez5.respondSuccess(res)
+			);
 		else
-			respondSuccess(info)
+			ez5.respondSuccess(info)
 
 module.exports = new Example()

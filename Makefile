@@ -6,6 +6,7 @@ INSTALL_FILES = \
 	$(WEB)/l10n/en-US.json \
 	$(CSS) \
 	$(WEB)/example-plugin.js \
+	build/node_modules \
 	example-plugin.config.yml
 
 # XXX: unavailable languages
@@ -39,7 +40,11 @@ all: build
 
 include easydb-library/tools/base-plugins.make
 
-build: code css
+build: code css npm_install
+
+npm_install:
+	npm install
+	cp -r node_modules build/node_modules
 
 code: $(JS) $(L10N) $(WEBHOOK_JS)
 
