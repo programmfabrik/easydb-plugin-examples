@@ -14,5 +14,11 @@ class ez5.ExampleEditorPlugin extends ez5.EditorPlugin
 
 		return problems
 
+	onSave: (opts) ->
+		console.debug("ExampleEditorPlugin.onSave, data of the current object:", opts.resultObject.getData())
+		# you can do data checks or changes here
+		return CUI.confirm(text: "Do you really want to save?")
+
+
 ez5.session_ready ->
 	Editor.plugins.registerPlugin(ez5.ExampleEditorPlugin)

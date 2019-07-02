@@ -36,6 +36,9 @@ COFFEE_FILES = \
 	src/webfrontend/ExampleExportManagerPlugin.coffee \
 	src/webfrontend/ExampleRootApp.coffee
 
+# EditorPlugin is not built in per default, its to annoying during testing.
+# src/webfrontend/ExampleEditorPlugin.coffee
+
 all: build
 
 include easydb-library/tools/base-plugins.make
