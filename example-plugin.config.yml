@@ -10,6 +10,7 @@ plugin:
     en-US: "An example plugin for **easydb**."
   webhooks:
     - name: example
+      secret_base_config: "base.system.example_plugin.webhook_secret"
   webfrontend:
     url: example-plugin.js
     l10n: l10n/
@@ -125,6 +126,10 @@ base_config:
         plugin_type: example-base-config
         store_as_json: true
         position: 15
+      webhook_secret:
+        type: text
+        default: ""
+        position: 16
 
 python-2:
   file: src/server/example.py
