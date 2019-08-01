@@ -17,7 +17,7 @@ class Example
 			asciify( text, color:'green', (err, res) =>
 				ez5.respondSuccess(res)
 			);
-		else if pretty = queryStringParameters?.pretty?[0]
+		else if body = queryStringParameters?.body?[0]
 			ez5.respondSuccess(JSON.stringify(JSON.parse(info.request.body), null, 4) + "\n")
 		else
 			ez5.respondSuccess(info)
