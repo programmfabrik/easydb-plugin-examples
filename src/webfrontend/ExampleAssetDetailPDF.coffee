@@ -10,8 +10,6 @@ class ExampleAssetDetailPDF extends AssetDetail
 
 		"example.asset.detail.pdf"
 
-
-
 	createMarkup: ->
 		# console.debug "creatingMarkup", @
 		super()
