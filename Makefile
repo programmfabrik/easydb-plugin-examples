@@ -26,7 +26,6 @@ WEBHOOK_FILES = src/webhooks/Example.coffee
 COFFEE_FILES = \
 	src/webfrontend/ExampleTrayApp.coffee \
 	src/webfrontend/ExampleBaseConfig.coffee \
-	src/webfrontend/ExampleAssetDetailPDF.coffee \
 	src/webfrontend/ExamplePoolPlugin.coffee \
 	src/webfrontend/ExampleUserPlugin.coffee \
 	src/webfrontend/ExampleAssetDetail3D.coffee \
