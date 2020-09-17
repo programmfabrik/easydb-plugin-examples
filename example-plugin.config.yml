@@ -29,10 +29,6 @@ plugin:
                 type: bool
                 default: true
 
-system_rights:
-  - name: example
-    comment: "example system right 2"
-
 custom_events:
   - EASYDB_EXAMPLE_PLUGIN_EVENT
 
