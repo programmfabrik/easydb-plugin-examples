@@ -50,7 +50,12 @@ custom_types:
             color:
               type: select
               options: ["red", "blue", "green"]
-
+  example:
+    update:
+      script: build/update/example-update.js
+      timeout: 10
+      batch_size: 1000
+      interval_base_config: default_update_interval.days
 
 base_config:
   - name: example_plugin

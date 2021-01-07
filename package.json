@@ -3,5 +3,12 @@
   "version": "1.0.0",
   "dependencies": {
     "asciify": "^1.3.5"
+  },
+  "devDependencies": {
+    "coffee-loader": "^2.0.0",
+    "coffeescript": "^2.5.1",
+    "exact-math": "^2.2.3",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
   }
 }
