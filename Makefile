@@ -46,7 +46,7 @@ include easydb-library/tools/base-plugins.make
 build: code css npm_install updater
 
 updater:
-	webpack --config src/update/webpack.config.js
+	./node_modules/webpack/bin/webpack.js --config src/update/webpack.config.js
 
 npm_install:
 	npm install
