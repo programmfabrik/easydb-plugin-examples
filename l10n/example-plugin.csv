@@ -39,3 +39,5 @@
 ,example.mask.splitter.simple.option.title,Titel: %(value)s,Title: %(value)s
 ,example.mask.splitter.block.option.color,%(value)s,%(value)s
 Don't show this option,example.mask.splitter.block.option.style,-,-
+,pdf-creator.node.an-example-node.display-name,Example Node,Example Node
+,pdf-creator.node.an-example-node.settings.title,Title,Title

@@ -34,6 +34,7 @@ COFFEE_FILES = \
 	src/webfrontend/ExampleMaskSplitterBlock.coffee \
 	src/webfrontend/ExampleDetailSidebarPlugin.coffee \
 	src/webfrontend/ExampleExportManagerPlugin.coffee \
+	src/webfrontend/ExamplePdfCreatorNode.coffee \
 	src/webfrontend/ExampleRootApp.coffee
 
 # EditorPlugin is not built in per default, its to annoying during testing.
