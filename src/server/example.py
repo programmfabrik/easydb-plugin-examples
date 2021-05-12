@@ -22,7 +22,7 @@ def easydb_server_start(easydb_context):
     # called when server starts (just once)
     logger = easydb_context.get_logger('pf.plugin.base.example_plugin')
     logger.debug('server_start')
-    logger.debug('instance information: {0}'.format(json.dumps(easydb_context.get_instance(), indent = 4)))
+    logger.debug('instance information: {0}'.format(json.dumps(easydb_context.get_instance(), indent=4)))
 
     # api callbacks that extend the api
     # the api url is <server>/api/plugin/base/<plugin name>/<callback name>
@@ -67,9 +67,9 @@ def easydb_server_start(easydb_context):
     })
 
     # register a transition callback
-    easydb_context.register_callback('transition', {
-        'name': 'transition_callback_1',
-        'callback': 'transition_callback_1'
+    easydb_context.register_callback('transition_action', {
+        'action_type': 'example_transition_action',
+        'callback': 'example_transition_action'
     })
 
 
@@ -80,7 +80,7 @@ def generate_unique_id(easydb_context):
 
 
 # helper method to perform a search using an EasydbContext
-def perform_search_easydb(easydb_context, query, logger = None):
+def perform_search_easydb(easydb_context, query, logger=None):
     # get the user id from the current session
     user_id = None
     try:
@@ -94,16 +94,16 @@ def perform_search_easydb(easydb_context, query, logger = None):
         return None
     search_result = easydb_context.search('user', user_id, query)
     if logger is not None:
-        logger.debug('Search Result: %s' % json.dumps(search_result, indent = 4))
+        logger.debug('Search Result: %s' % json.dumps(search_result, indent=4))
 
     return search_result
 
 
 # helper method to perform a search using an EasydbProcessContext
-def perform_search_process(easydb_context, connection, session_identifier, query, logger = None):
+def perform_search_process(easydb_context, connection, session_identifier, query, logger=None):
     search_result = easydb_context.search(connection, 'user', session_identifier, query)
     if logger is not None:
-        logger.debug('Search Result: %s' % json.dumps(search_result, indent = 4))
+        logger.debug('Search Result: %s' % json.dumps(search_result, indent=4))
 
     return search_result
 
@@ -125,7 +125,7 @@ def search_for_medienart(easydb_context, name):
             'in': [name] # list of values that the field should have (only on in this case)
         }]
     }
-    logger.debug('Search Request: %s' % json.dumps(search_query, indent = 4))
+    logger.debug('Search Request: %s' % json.dumps(search_query, indent=4))
 
     # perform the search and return the result
     search_result = perform_search_easydb(easydb_context, search_query, logger)
@@ -226,10 +226,9 @@ def pre_update(easydb_context, easydb_info):
             logger.debug('Generating new ID for Object %d: %s' % (i, new_id))
             data[i]['medium']['identifier'] = new_id
 
-
     # always return if no exception was thrown, so the server and frontend are not blocked
     logger.debug('pre_update function returns following data to the database: %s'
-        % json.dumps(data, indent=4))
+                 % json.dumps(data, indent=4))
     return data
 
 
@@ -293,9 +292,9 @@ def export_as_yml(easydb_context, parameters):
 
                         # depending on the produce options, export the YML with or without tags
                         if with_tags:
-                            yaml.dump(object_output, yml_file, default_flow_style = False)
+                            yaml.dump(object_output, yml_file, default_flow_style=False)
                         else:
-                            yaml.safe_dump(object_output, yml_file, default_flow_style = False)
+                            yaml.safe_dump(object_output, yml_file, default_flow_style=False)
 
                         yml_file.close()
 
@@ -359,7 +358,7 @@ def check_expiration_date(easydb_context):
 
         # create and format a date that is 7 days in the future
         days_in_future = 7
-        date = datetime.now() + relativedelta(days = days_in_future)
+        date = datetime.now() + relativedelta(days=days_in_future)
         date_str = date.strftime('%Y-%m-%d')
 
         # build the Postgres statement
@@ -487,11 +486,28 @@ def check_expiration_date(easydb_context):
 
         # TODO dont send more then one mail for each object
 
+# example transition action
+# write the current timestamp into a text field
+# assume that the objects are of objecttype 'obj' and have a text field 'timestamp'
+# this function is only called if there are transitions (for INSERT/UPDATE) on this objecttype with this plugin action set
+def example_transition_action(easydb_context, data):
+    logger = easydb_context.get_logger('pf.plugin.base.example_plugin.example_transition_action')
 
+    if not 'data' in data:
+        return []
 
-def transition_callback_1(easydb_context):
-    logger = easydb_context.get_logger('pf.plugin.base.example_plugin.transition_callback_1')
-    logger.warn('******************************************* transition_callback_1 *******************************************')
+    objects = data['data']
+    for i in range(len(objects)):
+        # check for the correct objecttype
+        if not 'obj' in objects[i]:
+            continue
+
+        # set the value in the object
+        objects[i]['obj']['timestamp'] = str(datetime.now())
+        logger.debug('set timestamp for object %d: %s' % (objects[i]['obj']['_id'],
+                                                          objects[i]['obj']['timestamp']))
+
+    return objects
 
 # method to cleanup process plugin resources before the server stops
 def stop(easydb_context):
@@ -561,7 +577,7 @@ def echo(easydb_context, parameters):
         else:
             lines.append('Body: {0} bytes'.format(len(body)))
     else:
-            lines.append('Body: none')
+        lines.append('Body: none')
     lines.append('')
     return text_response('\n'.join(lines), status_code=status_code)
 
@@ -584,4 +600,3 @@ def text_response(text, status_code=200):
             'Content-Type': 'text/plain; charset=utf-8'
         }
     }
-
