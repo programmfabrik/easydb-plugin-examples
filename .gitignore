@@ -4,5 +4,6 @@
 *.pyc
 build
 build-stamp-*
+build-info.json
 *~
 node_modules
